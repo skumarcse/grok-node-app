@@ -1,0 +1,15 @@
+{
+  "name": "grok-node-app",
+  "version": "1.0.0",
+  "description": "A simple Node.js app for CI with GitHub Actions",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
