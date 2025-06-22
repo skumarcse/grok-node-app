@@ -11,17 +11,38 @@ jobs:
         if: ${{ always() }}
         uses: action-pack/send-mail@v1
         with:
-            host: smtp.google.com
-            # Optional port (defaults to 465)
-            port: 465
-            account: ${{ secrets.MAIL_ACCOUNT }}
-            password: ${{ secrets.MAIL_PASSWORD }}
-            sender: devellany
-            from: ${{ secrets.MAIL_ADDRESS }}
+            # Required connection URL:
+            connection_url: ${{secrets.MAIL_CONNECTION}}
+            # Examples:
+            #  * smtp://user:password@server:port
+            #  * smtp+starttls://user:password@server:port
+            # Required mail subject:
+            subject: Github Actions job result
+            # Required recipients' addresses:
             to: geotags.genial.0p@icloud.com
-            subject: GitHub Actions.
-            body: This is from Github and Actions Workflow.
-            # Optional content type (defaults to text/plain)
-            contentType: text/plain
-            # Optional attachment files (JSON type. require property 'path')
-            attachments: '[{"path":"README.md"}]'
+            # Required sender full name (address can be skipped):
+            from: Kumar Skywalker # <user@example.com>
+            # Optional plain body:
+            body: Build job of ${{github.repository}} completed successfully!
+            # Optional HTML body read from file:
+            html_body: file://README.html
+            # Optional carbon copy recipients:
+            cc: skumarcse@hotmail.com
+            # Optional blind carbon copy recipients:
+            bcc: skumarcse@yahoo.com
+            # Optional recipient of the email response:
+            reply_to: skumarcse@gmail.com
+            # Optional Message ID this message is replying to:
+            in_reply_to: skumarcse@gmail.com
+            # Optional unsigned/invalid certificates allowance:
+            ignore_cert: true
+            # Optional converting Markdown to HTML (set content_type to text/html too):
+            convert_markdown: true
+            # Optional attachments:
+            attachments: attachments.zip,git.diff,./dist/static/*.js
+            # Optional priority: 'high', 'normal' (default) or 'low'
+            priority: low
+            # Optional nodemailerlog: true/false
+            nodemailerlog: false
+            # Optional nodemailerdebug: true/false if true lognodem will also be set true
+            nodemailerdebug: false
