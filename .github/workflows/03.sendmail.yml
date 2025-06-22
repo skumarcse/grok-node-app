@@ -9,7 +9,7 @@ jobs:
         run: echo "Hello World"
       - name: Sending an email
         if: ${{ always() }}
-        uses: devellany/send-mailer@v1.0.2
+        uses: action-pack/send-mail@v1
         with:
             host: smtp.google.com
             # Optional port (defaults to 465)
